@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honeypot Dashboard</title>
+</head>
+<body>
+    <h1>Honeypot Dashboard</h1>
+    <div id="live-logs"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        const socket = io();
+        socket.on('live_logs', function(data) {
+            const logsDiv = document.getElementById('live-logs');
+            logsDiv.innerHTML = JSON.stringify(data, null, 2);
+        });
+    </script>
+</body>
+</html>
